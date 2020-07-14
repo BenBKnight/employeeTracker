@@ -18,7 +18,7 @@ function SearchForm(props) {
           id="breed"
         />
         <datalist id="breeds">
-          {props.breeds.map(breed => (
+          {props.name.map(breed => (
             <option value={breed} key={breed} />
           ))}
         </datalist>
