@@ -1,19 +1,38 @@
 import React from "react";
 import "./style.css";
+import Alert from "../Alert/index"
+function Card({ data }) {
 
-function Card(props) {
   return (
-    <div
-      className="card"
-    >
-      <img scr="https://randomuser.me/api/portraits/women/12.jpg" alt="https://randomuser.me/api/portraits/women/12.jpg"></img>
-      <h1> {props.title} {props.first} {props.last}</h1>
-      <h2>{props.phone}</h2>
-      <h2>{props.email}</h2>
-      <h2>{props.dob}</h2>
-      {!props.image && <i className="fa fa-spinner fa-spin" aria-hidden="true" />}
-    </div>
-  );
+    <table >
+      <thead>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th>phone</th>
+          <th>email</th>
+          <th>dob</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {data.map(employeeData => (
+          <tr key={employeeData.id.value}>
+            <Alert
+              image={employeeData.picture.large}
+              title={employeeData.name.title}
+              first={employeeData.name.first}
+              last={employeeData.name.last}
+              phone={employeeData.phone}
+              email={employeeData.email}
+              dob={employeeData.dob.date}
+            />
+          </tr>
+        ))}
+
+      </tbody>
+    </table>
+  )
 }
 
 export default Card;

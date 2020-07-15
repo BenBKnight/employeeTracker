@@ -6,9 +6,13 @@ export default {
   // getAll: function () {
   //   return axios.get("https://randomuser.me/api/?results=200&nat=us");
   // },
-  // getDogsOfBreed: function(breed) {
-  //   return axios.get("https://dog.ceo/api/breed/" + breed + "/images");
-  // },
+  getPicture: function () {
+    axios.get("https://randomuser.me/api/?results=200&nat=us")
+      .then(res => {
+        return axios.get(res.data.results[0].picture.large)
+      })
+
+  },
   getAll: function () {
     return axios.get("https://randomuser.me/api/?results=200&nat=us");
   }

@@ -2,13 +2,13 @@ import React from "react";
 
 function Alert(props) {
   return (
-    <div
-      role="alert"
-      className={`alert alert-${props.type} fade in`}
-      style={{ width: "80%", margin: "0 auto", marginTop: 18, ...props.style }}
-    >
-      {props.children}
-    </div>
+    <React.Fragment>
+      <td><img src={props.image} alt="this is stupid" /> </td>
+      <td>{props.title} {props.first} {props.last}</td>
+      <td>{props.phone}</td>
+      <td>{props.email}</td>
+      <td>{props.dob}</td>
+    </React.Fragment>
   );
 }
 
