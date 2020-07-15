@@ -1,6 +1,6 @@
 import React from "react";
 
-function Alert(props) {
+function Employee(props) {
   return (
     <React.Fragment>
       <td><img src={props.image} alt="this is stupid" /> </td>
@@ -12,4 +12,4 @@ function Alert(props) {
   );
 }
 
-export default Alert;
+export default Employee;

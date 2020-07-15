@@ -1,24 +1,24 @@
 import React from "react";
 import "./style.css";
-import Alert from "../Alert/index"
-function Card({ data }) {
+import Employee from "../Employee/index"
+function Table({ data }) {
 
   return (
     <table >
       <thead>
         <tr>
-          <th>image</th>
-          <th>name</th>
-          <th>phone</th>
-          <th>email</th>
-          <th>dob</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Date of Birth</th>
         </tr>
       </thead>
       <tbody>
 
         {data.map(employeeData => (
           <tr key={employeeData.id.value}>
-            <Alert
+            <Employee
               image={employeeData.picture.large}
               title={employeeData.name.title}
               first={employeeData.name.first}
@@ -35,4 +35,4 @@ function Card({ data }) {
   )
 }
 
-export default Card;
+export default Table;

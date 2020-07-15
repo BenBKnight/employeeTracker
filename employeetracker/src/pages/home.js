@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Card from "../components/Card";
+import Table from "../components/Table";
 
 
 class Discover extends Component {
@@ -28,18 +28,9 @@ class Discover extends Component {
 
   render() {
     return (
-      <div>
-        <h1 className="text-center">Make New Friends</h1>
-        <h3 className="text-center">
-          Thumbs up on any pups you'd like to meet!
-        </h3>
-        <Card
-          data={this.state.results}
-        />
-        <h1 className="text-center">
-          Made friends with {this.state.matchCount} pups so far!
-        </h1>
-      </div>
+      <Table
+        data={this.state.results}
+      />
     );
   }
 }
