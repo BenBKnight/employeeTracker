@@ -1,19 +1,41 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Table from "../components/Table";
-
+import Search from "../components/Search";
 
 class Discover extends Component {
   state = {
-    results: []
+    results: [],
+    search: ""
   };
 
-  // When the component mounts, load the next dog to be displayed
   componentDidMount() {
-    this.loadNextDog();
-  }
+    this.getEmployeeData();
+  };
 
-  loadNextDog = () => {
+  // handleInputChange = event => {
+  //   this.setState({ search: event.target.value });
+  // };
+
+  handleInputChange = event => {
+    event.preventDefault();
+    this.state.results.filter(
+      (results) => {
+        let filtered = results.indexOf(this.state.search) !== -1;
+        return this.setState({ results: filtered })
+      }
+    )
+    API.getDogsOfBreed(this.state.search)
+      .then(res => {
+        if (res.data.status === "error") {
+          throw new Error(res.data.message);
+        }
+        this.setState({ results: res.data.message, error: "" });
+      })
+      .catch(err => this.setState({ error: err.message }));
+  };
+
+  getEmployeeData = () => {
     API.getAll()
       .then(res =>
         this.setState({
@@ -28,9 +50,15 @@ class Discover extends Component {
 
   render() {
     return (
-      <Table
-        data={this.state.results}
-      />
+      <React.Fragment>
+        <Search
+          handleInputChange={this.handleInputChange}
+        />
+        <Table
+          data={this.state.results}
+          search={this.state.search}
+        />
+      </React.Fragment>
     );
   }
 }

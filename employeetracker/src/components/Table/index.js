@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import Employee from "../Employee/index"
+
 function Table({ data }) {
 
   return (
@@ -15,7 +16,6 @@ function Table({ data }) {
         </tr>
       </thead>
       <tbody>
-
         {data.map(employeeData => (
           <tr key={employeeData.id.value}>
             <Employee
