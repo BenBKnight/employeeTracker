@@ -6,33 +6,20 @@ import Search from "../components/Search";
 class Discover extends Component {
   state = {
     results: [],
-    search: ""
+    search: [],
+    firstNameSorted: false
   };
 
   componentDidMount() {
     this.getEmployeeData();
   };
 
-  // handleInputChange = event => {
-  //   this.setState({ search: event.target.value });
-  // };
-
-  handleInputChange = event => {
-    event.preventDefault();
-    this.state.results.filter(
-      (results) => {
-        let filtered = results.indexOf(this.state.search) !== -1;
-        return this.setState({ results: filtered })
-      }
-    )
-    API.getDogsOfBreed(this.state.search)
-      .then(res => {
-        if (res.data.status === "error") {
-          throw new Error(res.data.message);
-        }
-        this.setState({ results: res.data.message, error: "" });
-      })
-      .catch(err => this.setState({ error: err.message }));
+  handleInputChange = e => {
+    e.preventDefault();
+    const searchedName = e.target.value;
+    this.setState({
+      search: searchedName
+    })
   };
 
   getEmployeeData = () => {
@@ -43,9 +30,40 @@ class Discover extends Component {
         })
       )
       .catch(err => console.log(err));
-    API.getAll().then(res => console.log(res.data.results
-    ))
   };
+  sortByName = (event) => {
+    event.preventDefault();
+    let sorted = this.state.results;
+    if (this.state.firstNameSorted === false) {
+      sorted.sort((a, b) => a === b ? 0 : (a.name.first > b.name.first) ? 1 : -1)
+      this.setState({
+        result: sorted,
+        firstNameSorted: true
+      })
+    } else {
+      sorted.sort((a, b) => a === b ? 0 : (a.name.first < b.name.first) ? 1 : -1)
+      this.setState({
+        result: sorted,
+        firstNameSorted: false
+      })
+    }
+  }
+  // toggleFirstName = () => {
+  //   this.sortByName();
+  //   this.setState({
+  //     firstNameSorted: !this.state.firstNameSorted
+  //   })
+  // }
+
+
+
+
+
+
+  // let newResults = results.name.first
+  // this.setState({
+  //   results: newResults.sort((a,b) )
+  // })
 
 
   render() {
@@ -53,8 +71,10 @@ class Discover extends Component {
       <React.Fragment>
         <Search
           handleInputChange={this.handleInputChange}
+          search={this.state.search}
         />
         <Table
+          sortByName={this.sortByName}
           data={this.state.results}
           search={this.state.search}
         />
