@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Table from "../components/Table";
 import Search from "../components/Search";
+import "./index.css"
 
 class Discover extends Component {
   state = {
@@ -31,6 +32,8 @@ class Discover extends Component {
       )
       .catch(err => console.log(err));
   };
+
+  // Sorts list by first name, toggles between A-Z to Z-A
   sortByName = (event) => {
     event.preventDefault();
     let sorted = this.state.results;
@@ -48,36 +51,23 @@ class Discover extends Component {
       })
     }
   }
-  // toggleFirstName = () => {
-  //   this.sortByName();
-  //   this.setState({
-  //     firstNameSorted: !this.state.firstNameSorted
-  //   })
-  // }
-
-
-
-
-
-
-  // let newResults = results.name.first
-  // this.setState({
-  //   results: newResults.sort((a,b) )
-  // })
-
-
   render() {
     return (
       <React.Fragment>
-        <Search
-          handleInputChange={this.handleInputChange}
-          search={this.state.search}
-        />
-        <Table
-          sortByName={this.sortByName}
-          data={this.state.results}
-          search={this.state.search}
-        />
+        <div className="marginClass">
+          <div className="centerSearch">
+            <Search
+              handleInputChange={this.handleInputChange}
+              search={this.state.search}
+            />
+          </div>
+          <hr />
+          <Table
+            sortByName={this.sortByName}
+            data={this.state.results}
+            search={this.state.search}
+          />
+        </div>
       </React.Fragment>
     );
   }

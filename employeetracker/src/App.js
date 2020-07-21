@@ -7,7 +7,7 @@ import Hero from "../src/components/Hero/index"
 function App() {
   return (
     <Router>
-      <div>
+      <div className="container-fluid">
         <Hero />
         <Route exact patH="/" component={Home} />
       </div>
