@@ -21,7 +21,7 @@
 [GitHub Repository](https://github.com/BenBKnight/employeeTracker)
 
 ## Picture
-![Picture of finished project](./public/screenShot.png) 
+![Picture of finished project](./employeetracker/public/screenShot.png) 
 
   ### License ![License](https://img.shields.io/badge/License-MIT-blue)
   
