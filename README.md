@@ -17,7 +17,8 @@
  npm start 
 ```
 ## Link to Project
-[Weather Dashboard](https://benbknight.github.io/WeatherDashboard/)
+[Employee Tracker](https://benbknight.github.io/employeeTracker/)
+[GitHub Repository](https://github.com/BenBKnight/employeeTracker)
 
 ## Picture
 ![Picture of finished project](./public/screenShot.png) 
@@ -25,7 +26,7 @@
   ### License ![License](https://img.shields.io/badge/License-MIT-blue)
   
   ### Contributing
-  Ben Knight - Backend, Trilogy - Front end
+  Ben Knight
   
 
   

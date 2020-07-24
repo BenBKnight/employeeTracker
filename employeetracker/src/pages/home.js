@@ -51,6 +51,7 @@ class Discover extends Component {
       })
     }
   }
+
   render() {
     return (
       <React.Fragment>
